@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.aprendendothymeleaf.domain.Cargo;
 
+
 public interface CargoDAO {
 	
 	void save(Cargo cargo);

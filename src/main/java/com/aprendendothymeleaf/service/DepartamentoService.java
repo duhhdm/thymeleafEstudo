@@ -1,5 +1,7 @@
 package com.aprendendothymeleaf.service;
 
+import java.util.List;
+
 import com.aprendendothymeleaf.domain.Departamento;
 
 public interface DepartamentoService {
@@ -8,6 +10,6 @@ public interface DepartamentoService {
 	void atualizar(Departamento departamento);
 	void deletar(Integer id);
 	Departamento buscarId(Integer id);
-	Departamento bustarTodos();
+	List<Departamento> bustarTodos();
 	
 }

@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 
+
 /*
  * Essa classe abstract ira funcionar como uma especie de DAO generico
  * na assinatura da classe temos dois tipos genericos. 

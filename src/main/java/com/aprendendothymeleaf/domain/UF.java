@@ -1,5 +1,6 @@
 package com.aprendendothymeleaf.domain;
 
+
 public enum UF {
 	//objetos do enum
 	AC("AC", "Acre"), 

@@ -1,5 +1,7 @@
 package com.aprendendothymeleaf.service;
 
+import java.util.List;
+
 import com.aprendendothymeleaf.domain.Funcionario;
 
 public interface FuncionarioService {
@@ -8,6 +10,6 @@ public interface FuncionarioService {
 	void atualizar(Funcionario funcionario);
 	void deletar(Integer id);
 	Funcionario buscarId(Integer id);
-	Funcionario bustarTodos();
+	List<Funcionario> bustarTodos();
 	
 }

@@ -1,5 +1,6 @@
 package com.aprendendothymeleaf.domain;
 
+
 import java.io.Serializable;
 
 import javax.persistence.Column;

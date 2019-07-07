@@ -14,6 +14,7 @@ import com.aprendendothymeleaf.domain.Cargo;
  * 
  */
 
+
 @Service
 @Transactional(readOnly=false)
 public class CargoServiceImpl implements CargoService{

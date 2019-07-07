@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.aprendendothymeleaf.domain.Departamento;
 
+
 public interface DepartamentoDAO {
 	
 	void save(Departamento departamento);

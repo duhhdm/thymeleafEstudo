@@ -11,6 +11,7 @@ import com.aprendendothymeleaf.domain.Departamento;
  */
 
 
+
 @Repository
 public class DepartamentoDAOimpl extends AbstractDAO<Departamento, Integer> implements DepartamentoDAO {
 	

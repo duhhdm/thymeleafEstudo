@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.aprendendothymeleaf.domain.Funcionario;
 
+
 public interface FuncionarioDAO {
 	
 	void save(Funcionario funcionario);
