@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.21.RELEASE</version>
+		<version>2.0.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.aprendendothymeleaf</groupId>
@@ -23,11 +23,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<dependency><!-- Dependencia Thymeleaf para layout -->
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+		</dependency>
 		<dependency> <!-- Dependencia principal web -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency> <!-- Dependencia de dev -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -46,8 +49,7 @@
 	    </dependency>
 	    <dependency> <!-- Dependencia script -->
 	        <groupId>org.webjars</groupId>
-	        <artifactId>webjars-locator</artifactId>
-	        <version>0.30</version>
+	        <artifactId>webjars-locator-core</artifactId>
 	    </dependency>
 	   	<dependency> <!-- Dependencia de icones -->
 		    <groupId>org.webjars.bower</groupId>
@@ -60,7 +62,7 @@
     		<version>1.14.15</version>
 		</dependency>
 	   <dependency> <!-- Dependencia JQuery -->
-		    <groupId>org.webjars.bower</groupId>
+		    <groupId>org.webjars</groupId>
 		    <artifactId>jquery</artifactId>
 		    <version>3.4.1</version>
 		</dependency>
@@ -83,5 +85,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
