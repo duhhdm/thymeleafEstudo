@@ -11,5 +11,6 @@ public interface DepartamentoService {
 	void deletar(Integer id);
 	Departamento buscarId(Integer id);
 	List<Departamento> bustarTodos();
+	boolean departamentoTemCargos(Integer id);
 	
 }

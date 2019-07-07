@@ -47,5 +47,15 @@ public class DepartamentoServiceImpl implements DepartamentoService{
 		// TODO Auto-generated method stub
 		return departamentoDao.findAll();
 	}
+
+	@Override
+	public boolean departamentoTemCargos(Integer id) {
+		// TODO Auto-generated method stub
+		Departamento aux = buscarId(id);
+		if(aux.getCargos().isEmpty())
+			return false;
+		else
+			return true;
+	}
 	
 }

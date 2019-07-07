@@ -42,10 +42,11 @@ public class Departamento implements Serializable {
 		
 	}
 
-	public Departamento(Integer id, String nome) {
+	public Departamento(Integer id, String nome,List<Cargo> cargos) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.cargos = cargos;
 	}
 	
 	
@@ -64,6 +65,14 @@ public class Departamento implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public List<Cargo> getCargos() {
+		return cargos;
+	}
+
+	public void setCargos(List<Cargo> cargos) {
+		this.cargos = cargos;
 	}
 
 	@Override

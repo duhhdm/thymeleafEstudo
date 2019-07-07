@@ -51,6 +51,31 @@
 		<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 		    
+			/*
+			 * aqui estou recebendo o valor do id com JQuery
+			 * a primeira parte ele quer dizer que execute esta funcao quando o button tiver
+			 * a id= "btn_" a function que criamos para ser executada no evento click
+			 * ele declara o valor a variavel url que this utiliza o metodo attr que recebe por parametro
+			 * o id utilizando o metodo split para dividir a string em duas partes uma antes do _ que seria
+			 * btn e outra depois que seria o endereco que quero
+			 */
+			
+			var url = '';
+			$('button[id*="btn_"]').click(function(){
+				url="http://localhost:8080/" + $(this).attr("id").split('_')[1];
+			});
+//-------------------------------------------------------------------------------------------------\\			
+			
+			/*
+			 * nesta function declaro que a url sera o valor do href do botao confirma
+			 * 
+			 */
+			 
+			$('#ok_confirm').click(function(){
+				document.location.href = url;
+			})			
+
+//-------------------------------------------------------------------------------------------------\\			
 			$(function() {
 				$('[data-toggle="popover"]').popover();
 			});
