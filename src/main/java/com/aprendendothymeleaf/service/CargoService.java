@@ -12,5 +12,6 @@ public interface CargoService {
 	void deletar(Integer id);
 	Cargo buscarId(Integer id);
 	List<Cargo> bustarTodos();
+	boolean temFuncionario(Integer id);
 	
 }

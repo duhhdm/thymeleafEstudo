@@ -64,4 +64,16 @@ public class CargoController {
 		obj.addFlashAttribute("success", "Cargo editado com sucesso!");
 		return "redirect:/cargos/listar";
 	}
+	
+	@GetMapping("/deletar/{id}")
+	public String deletar(@PathVariable("id") Integer id, ModelMap model) {
+		if(!servico.temFuncionario(id)) {
+			model.addAttribute("fail","Não é possivel remover o cargo");
+		}
+		else {
+			servico.deletar(id);
+			model.addAttribute("success","Cargo deletado com sucesso");
+		}
+		return "redirect:/cargos/listar";
+	}
 }

@@ -54,4 +54,14 @@ public class CargoServiceImpl implements CargoService{
 		return daoCargo.findAll();
 	}
 
+	@Override
+	public boolean temFuncionario(Integer id) {
+		// TODO Auto-generated method stub
+		Cargo aux = buscarId(id);
+		if(aux.getFuncionario().isEmpty())
+			return true;
+		else
+			return false;
+	}
+
 }

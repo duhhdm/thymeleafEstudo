@@ -15,6 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 @Entity
 @Table(name="tbFuncionario")
 public class Funcionario implements Serializable {
@@ -27,12 +32,15 @@ public class Funcionario implements Serializable {
 	@Column(nullable=false)
 	private String nome;
 	
+	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
 	@Column(nullable=false, columnDefinition="DECIMAL(7,2) DEFAULT 0.00")
 	private Double salario;
 	
+	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name="dataEntrada", nullable=false, columnDefinition="DATE")
 	private LocalDate dataEntrada;
 	
+	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name="dataSaida", columnDefinition="DATE")//dataSaida nao e obrigatorio.
 	private LocalDate dataSaida;
 	
@@ -140,6 +148,4 @@ public class Funcionario implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 }
