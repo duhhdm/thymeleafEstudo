@@ -42,7 +42,7 @@ public class DepartamentoController {
 	@PostMapping("/salvar")
 	public String salvar(Departamento departamento, RedirectAttributes obj){
 		servico.salvar(departamento);
-		obj.addFlashAttribute("success", "Departamento editado com sucesso!");
+		obj.addFlashAttribute("success", "Departamento Criado com sucesso!");
 		return "redirect:/departamentos/cadastrar"; //redirect:/pagina desejada ele redireciona para a pagina desejada
 	}
 	
