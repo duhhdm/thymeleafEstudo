@@ -12,5 +12,7 @@ public interface FuncionarioDAO {
 	void delete(Integer id);
 	Funcionario findById(Integer id);
 	List<Funcionario> findAll();
+	List<Funcionario> findByName(String nome);
+	List<Funcionario> findByCargo(Integer id);
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aprendendothymeleaf.domain.Cargo;
@@ -51,6 +52,13 @@ public class FuncionarioController {
 		funcServico.salvar(funcionario);
 		return "redirect:/funcionarios/cadastrar";
 	}
+	
+	@GetMapping("/buscar/nome")
+	public String busrcaPorNome(@RequestParam("nome") String nome, ModelMap model) {
+		model.addAttribute("funcionario", funcServico.buscarPorNome(nome));
+		return "funcionario/lista";
+	}
+	
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {

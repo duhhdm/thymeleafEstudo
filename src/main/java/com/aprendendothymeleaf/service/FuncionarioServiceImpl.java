@@ -46,5 +46,11 @@ public class FuncionarioServiceImpl implements FuncionarioService{
 		// TODO Auto-generated method stub
 		return funcionarioDao.findAll();
 	}
+
+	@Override
+	public List<Funcionario> buscarPorNome(String nome) {
+		// TODO Auto-generated method stub
+		return funcionarioDao.findByName(nome);
+	}
 	
 }

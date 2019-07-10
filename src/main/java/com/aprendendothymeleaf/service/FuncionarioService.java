@@ -11,5 +11,6 @@ public interface FuncionarioService {
 	void deletar(Integer id);
 	Funcionario buscarId(Integer id);
 	List<Funcionario> bustarTodos();
+	List<Funcionario> buscarPorNome(String nome);
 	
 }
