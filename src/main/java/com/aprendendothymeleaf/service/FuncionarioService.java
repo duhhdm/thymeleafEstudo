@@ -1,5 +1,6 @@
 package com.aprendendothymeleaf.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.aprendendothymeleaf.domain.Funcionario;
@@ -12,5 +13,7 @@ public interface FuncionarioService {
 	Funcionario buscarId(Integer id);
 	List<Funcionario> bustarTodos();
 	List<Funcionario> buscarPorNome(String nome);
+	List<Funcionario> buscarPorCargo(Integer id);
+	List<Funcionario> buscaPorData(LocalDate entrada, LocalDate saida);
 	
 }

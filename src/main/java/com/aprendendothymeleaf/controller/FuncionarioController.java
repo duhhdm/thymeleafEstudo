@@ -1,8 +1,10 @@
 package com.aprendendothymeleaf.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +61,18 @@ public class FuncionarioController {
 		return "funcionario/lista";
 	}
 	
+	@GetMapping("/buscar/cargo")
+	public String buscarPorCargo(@RequestParam("cargo") Integer cargo, ModelMap model) {
+		model.addAttribute("funcionario", funcServico.buscarPorCargo(cargo));
+		return "/funcionario/lista";
+	}
+	
+	@GetMapping("/buscar/data")
+	public String buscarPorData(@RequestParam("entrada") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate entrada,
+			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate saida, ModelMap model) {
+		model.addAttribute("funcionario",funcServico.buscaPorData(entrada,saida));
+		return "/funcionario/lista";
+	}
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {

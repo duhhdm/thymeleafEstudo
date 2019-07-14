@@ -1,5 +1,6 @@
 package com.aprendendothymeleaf.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.aprendendothymeleaf.domain.Funcionario;
@@ -14,5 +15,8 @@ public interface FuncionarioDAO {
 	List<Funcionario> findAll();
 	List<Funcionario> findByName(String nome);
 	List<Funcionario> findByCargo(Integer id);
+	List<Funcionario> findByData(LocalDate entrada, LocalDate saida);
+	List<Funcionario> findByEntrada(LocalDate entrada);
+	List<Funcionario> findBysaida(LocalDate saida);
 	
 }
