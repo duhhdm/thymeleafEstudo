@@ -1,9 +1,16 @@
 package com.aprendendothymeleaf.controller;
 
 
+
+
+
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,8 +51,16 @@ public class CargoController {
 	 * a id em um objeto de departamento
 	 */
 	
+	/*
+	 * Na anotação @Valid é para informar ao spring que tem que ser feito uma validação
+	 * Nos parametros do metodo salvar e editar e importante que o BindingResult venha antes
+	 * do RedirectAttributes se nao ocorre erro.
+	 */
 	@PostMapping("/salvar")
-	public String salvar(Cargo cargo, RedirectAttributes obj) {
+	public String salvar(@Valid Cargo cargo, BindingResult result, RedirectAttributes obj) {
+		if(result.hasErrors()) {
+			return "/cargo/cadastro";
+		}
 		servico.salvar(cargo);
 		obj.addFlashAttribute("success", "Cargo Inserido com sucesso");
 		return "redirect:/cargos/cadastrar/";
@@ -59,7 +74,10 @@ public class CargoController {
 	}
 	
 	@PostMapping("/editar")
-	public String editar(Cargo cargo, RedirectAttributes obj) {
+	public String editar(@Valid Cargo cargo,BindingResult result, RedirectAttributes obj) {
+		if(result.hasErrors()) {
+			return "/cargo/cadastro";
+		}
 		servico.atualizar(cargo);
 		obj.addFlashAttribute("success", "Cargo editado com sucesso!");
 		return "redirect:/cargos/listar";

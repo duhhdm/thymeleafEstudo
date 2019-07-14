@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /*
  * Adicionamos o @OneToMany porque temos muitos cargos para 1 departamento
@@ -19,6 +21,14 @@ import javax.persistence.Table;
  * temos que definir qual e o lado mais fraco e o lado forte da relacao
  * o lado forte e onde contem a chave estrangeira o mappedBy significa dizer qual e o lado forte da relacao
  * esse atributo entao e o departamento que se encontra na classe Cargo.class
+ * 
+ */
+
+/*
+ * a anotação @NotBlank diz que não pode ser em branco enviando a mensagem que declaramos no message
+ * 
+ * na anotação @Size(min = 3, max = 60, message="O nome do departamento deve ter entre {min} e {max} caracteres.")
+ * declaro a variavel min e a variavel max para que na message imprima os valores declarados.
  * 
  */
 
@@ -32,6 +42,8 @@ public class Departamento implements Serializable {
 	private Integer id;
 	
 	//name="nome da coluna nullable=nao aceita null unique=campo unico legth=tamanho"
+	@NotBlank(message="Informe um nome") //validação de campo.
+	@Size(min = 3, max = 60, message="O nome do departamento deve ter entre {min} e {max} caracteres.")
 	@Column(name="nome", nullable=false, unique=true, length=60)
 	private String nome;
 

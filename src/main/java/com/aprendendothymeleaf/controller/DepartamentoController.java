@@ -2,9 +2,12 @@ package com.aprendendothymeleaf.controller;
 
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +43,7 @@ public class DepartamentoController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Departamento departamento, RedirectAttributes obj){
+	public String salvar(@Valid Departamento departamento, BindingResult result, RedirectAttributes obj){
 		servico.salvar(departamento);
 		obj.addFlashAttribute("success", "Departamento Criado com sucesso!");
 		return "redirect:/departamentos/cadastrar"; //redirect:/pagina desejada ele redireciona para a pagina desejada
@@ -53,7 +56,7 @@ public class DepartamentoController {
 	}
 	
 	@PostMapping("/editar")
-	public String editar(Departamento departamento, RedirectAttributes obj) {
+	public String editar(@Valid Departamento departamento, BindingResult result, RedirectAttributes obj) {
 		servico.atualizar(departamento);
 		obj.addFlashAttribute("success", "Departamento editado com sucesso!");
 		return "redirect:/departamentos/listar";

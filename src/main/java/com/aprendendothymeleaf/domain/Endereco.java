@@ -11,6 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="tbEndereco")
@@ -21,25 +25,37 @@ public class Endereco implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank
+	@Size(min = 3, max = 255)
 	@Column(nullable = false)
 	private String logradouro;
 	
+	@NotBlank
+	@Size(min = 3, max = 255)
 	@Column(nullable = false)
 	private String bairro;
 	
+	@NotBlank
+	@Size(min = 3, max = 255)
 	@Column(nullable = false)
 	private String cidade;
 	
+	@NotNull(message = "{NotNull.endereco.uf}")
 	@Column(nullable = false, length=2)
 	@Enumerated(EnumType.STRING)//variavel do tipo enum no domain tem que marcar essa anotacao e definir o tipo do atributo no banco
 	private UF uf;
 	
+	@NotBlank
+	@Size(min = 9, max = 9, message = "{Size.endereco.cep}")
 	@Column(nullable = false, length=9)
 	private String cep;
 	
+	@NotNull(message = "{NotNull.endereco.numero}")
+	@Digits(integer = 5, fraction = 0)
 	@Column(nullable = false, length=5)
 	private Integer numero;
 	
+	@Size(max = 255)
 	private String complemento;
 	
 	public Endereco() {

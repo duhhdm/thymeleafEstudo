@@ -14,11 +14,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
+
+/*
+ * a anotacao @PastOrPresent valida a data, a data nao pode ser inferior ao dia de hoje
+ * a anotacao @Valid sendo utilizada no objeto endereco esta informando para o Spring que este
+ * objete tem que ser validado.
+ * 
+ */
 
 @Entity
 @Table(name="tbFuncionario")
@@ -29,13 +41,18 @@ public class Funcionario implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank
+	@Size(max = 255,min = 3)
 	@Column(nullable=false)
 	private String nome;
 	
+	@NotNull
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
 	@Column(nullable=false, columnDefinition="DECIMAL(7,2) DEFAULT 0.00")
 	private Double salario;
 	
+	@NotNull
+	@PastOrPresent(message="{PastOrPresent.funcionario.dataEntrada}") //recebe o valor do ValidationMessages.properties
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name="dataEntrada", nullable=false, columnDefinition="DATE")
 	private LocalDate dataEntrada;
@@ -44,10 +61,12 @@ public class Funcionario implements Serializable {
 	@Column(name="dataSaida", columnDefinition="DATE")//dataSaida nao e obrigatorio.
 	private LocalDate dataSaida;
 	
+	@Valid
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="idEndereco")
 	private Endereco endereco;
 	
+	@NotNull(message = "{NotNull.funcionario.cargo}") //recebe o valor do ValidationMessages.properties
 	@ManyToOne//Utilizo essa anotacao quando 1 cargo tem muitos funcionarios
 	@JoinColumn(name="idCargo")
 	private Cargo cargo;
