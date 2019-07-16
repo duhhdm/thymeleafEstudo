@@ -1,10 +1,6 @@
 package com.aprendendothymeleaf.controller;
 
 
-
-
-
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;

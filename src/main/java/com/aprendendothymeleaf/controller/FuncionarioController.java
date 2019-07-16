@@ -10,7 +10,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +25,7 @@ import com.aprendendothymeleaf.domain.Funcionario;
 import com.aprendendothymeleaf.domain.UF;
 import com.aprendendothymeleaf.service.CargoService;
 import com.aprendendothymeleaf.service.FuncionarioService;
+import com.aprendendothymeleaf.validator.FuncionarioValidator;
 
 
 @Controller
@@ -34,6 +37,11 @@ public class FuncionarioController {
 	
 	@Autowired
 	private FuncionarioService funcServico;
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.addValidators(new FuncionarioValidator());
+	}
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Funcionario funcionario) {
